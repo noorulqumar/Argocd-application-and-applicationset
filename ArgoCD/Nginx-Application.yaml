@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: hhttps://github.com/noorulqumar/Argocd-application-and-applicationset.git
+    repoURL: https://github.com/noorulqumar/Argocd-application-and-applicationset.git
     targetRevision: main
     path: nginx
   destination:
