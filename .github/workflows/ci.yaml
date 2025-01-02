@@ -124,6 +124,7 @@ jobs:
           git status
           git add green-deployment/deployment.yml
           git commit -m "Update deployment image to ${IMAGE}"
+          git remote -v
           git status
           git push
 
