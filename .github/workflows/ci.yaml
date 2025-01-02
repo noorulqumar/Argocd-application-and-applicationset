@@ -51,6 +51,7 @@ jobs:
       # Step 5: Update the deployment image
       - name: Update deployment image
         run: |
+          cd 
           cd ArgoCD-manifest-file
           IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
           sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
