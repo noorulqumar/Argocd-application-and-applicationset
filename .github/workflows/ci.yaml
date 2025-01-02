@@ -119,8 +119,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd ArgoCD-manifest-file
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git config --local user.name "noorulqumar"
+          git config --local user.email "noorulqumar0@gmail.com"
           git status
           git add green-deployment/deployment.yml
           git commit -m "Update deployment image to ${IMAGE}"
