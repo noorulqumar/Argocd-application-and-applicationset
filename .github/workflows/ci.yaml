@@ -34,7 +34,7 @@ jobs:
       - name: Set Up SSH Key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.AWS_ACCESS_KEY_ID }}" > ~/.ssh/noorulqumar0_github
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/noorulqumar0_github
           chmod 600 ~/.ssh/noorulqumar0_github
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/noorulqumar0_github
