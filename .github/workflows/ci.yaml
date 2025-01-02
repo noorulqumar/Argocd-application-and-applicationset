@@ -22,7 +22,7 @@ jobs:
           
       - name: Build and push image
         run: |
-          aws ecr get-login-password --region eu-west-2 | docker login --username AWS --password-stdin 010526243714.dkr.ecr.eu-west-2.amazonaws.com
+          sudo aws ecr get-login-password --region eu-west-2 | sudo docker login -u AWS -p $(aws ecr get-login-password --region eu-west-2) 010526243714.dkr.ecr.eu-west-2.amazonaws.com
           sudo docker pull nginx:latest
           sudo docker tag nginx:latest 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:latest
           sudo docker push 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:latest
