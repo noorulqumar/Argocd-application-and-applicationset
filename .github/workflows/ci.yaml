@@ -126,5 +126,5 @@ jobs:
           git commit -m "Update deployment image to ${IMAGE}"
           git remote -v
           git status
-          git push
+          git push origin main
 
