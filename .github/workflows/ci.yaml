@@ -38,6 +38,8 @@ jobs:
       # Step 2: Update the image value
       - name: Update deployment image
         run: |
+          ls
+          cd ArgoCD-manifest-file
           IMAGE=$GITHUB_RUN_NUMBER
           sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
           echo "Updated image to ${IMAGE}"
