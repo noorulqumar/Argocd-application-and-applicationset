@@ -44,6 +44,7 @@ jobs:
       # Step 5: Clone the repository
       - name: Clone the repository
         run: |
+          cd 
           git clone https://github.com/noorulqumar/ArgoCD-manifest-file.git
           ls
 
