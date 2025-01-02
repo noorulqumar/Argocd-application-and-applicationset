@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+env:
+  AWS_REGION: eu-west-1
+  TOKEN: "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"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -47,16 +49,28 @@ jobs:
           cd 
           git clone https://github.com/noorulqumar/ArgoCD-manifest-file.git
           ls
-
-      # Step 5: Update the deployment image
-      - name: Update deployment image
-        run: |
-          cd 
           cd ArgoCD-manifest-file
           IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
           sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
           echo "Updated image to ${IMAGE}"
           cat green-deployment/deployment.yml
+          git status
+          git add .
+          git config user.name "noorulqumar" --global
+          git config user.email "noorulqumar0@gmail.com" --global
+          git commit -m "Update image tag "
+          git remote set-url origin https://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@github.com/noorulqumar/ArgoCD-manifest-file.git
+          git push
+
+      # # Step 5: Update the deployment image
+      # - name: Update deployment image
+      #   run: |
+      #     cd 
+      #     cd ArgoCD-manifest-file
+      #     IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
+      #     sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
+      #     echo "Updated image to ${IMAGE}"
+      #     cat green-deployment/deployment.yml
 
       # - name: Push Updated Image tag
       #   uses: devops-infra/action-commit-push@master
@@ -68,20 +82,20 @@ jobs:
       #     force: false
       #     target_branch: main
 
-      # Step 6: Commit and push changes
-      - name: Commit and push changes
-        run: |
-          cd
-          ls
-          cd ArgoCD-manifest-file
-          ls
-          git remote set-url origin https://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@github.com/noorulqumar/ArgoCD-manifest-file.git
-          git config --local user.name "noorulqumar"
-          git config --local user.email "noorulqumar0@gmail.com"
-          git status
-          git add green-deployment/deployment.yml
-          git commit -m "Update deployment image"
-          git remote -v
-          git status
-          git push origin main
+      # # Step 6: Commit and push changes
+      # - name: Commit and push changes
+      #   run: |
+      #     cd
+      #     ls
+      #     cd ArgoCD-manifest-file
+      #     ls
+      #     git remote set-url origin https://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@github.com/noorulqumar/ArgoCD-manifest-file.git
+      #     git config --local user.name "noorulqumar"
+      #     git config --local user.email "noorulqumar0@gmail.com"
+      #     git status
+      #     git add green-deployment/deployment.yml
+      #     git commit -m "Update deployment image"
+      #     git remote -v
+      #     git status
+      #     git push origin main
 
