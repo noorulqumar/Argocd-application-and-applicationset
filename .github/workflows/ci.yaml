@@ -30,15 +30,17 @@ jobs:
       # Step 2: Clone The Repo
       - name: Clone The Repo
         run: |
+          cd 
           git clone https://github.com/noorulqumar/ArgoCD-manifest-file.git
           ls
+          
 
-      # # Step 2: Update the image value
-      # - name: Update deployment image
-      #   run: |
-      #     IMAGE=${{ github.event.inputs.image }}
-      #     sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
-      #     echo "Updated image to ${IMAGE}"
+      # Step 2: Update the image value
+      - name: Update deployment image
+        run: |
+          IMAGE=$GITHUB_RUN_NUMBER
+          sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
+          echo "Updated image to ${IMAGE}"
 
       # # Step 3: Commit and push changes
       # - name: Commit and push changes
