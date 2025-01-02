@@ -33,12 +33,12 @@ jobs:
       # Step 4: Set Up SSH Key
       - name: Set Up SSH Key
         run: |
+          cd ~
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/noorulqumar0_github
-          chmod 600 ~/.ssh/noorulqumar0_github
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/noorulqumar0_github
-          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          cat ~/.ssh/noorulqumar0_github
           
       # Step 5: Clone the repository
       - name: Clone the repository
