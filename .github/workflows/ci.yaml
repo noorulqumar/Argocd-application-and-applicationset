@@ -40,7 +40,7 @@ jobs:
         run: |
           cd 
           cd ArgoCD-manifest-file
-          IMAGE=$GITHUB_RUN_NUMBER
+          IMAGE=noorulqumar80/cicdargocd:$GITHUB_RUN_NUMBER
           sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
           echo "Updated image to ${IMAGE}"
           cat green-deployment/deployment.yml
