@@ -98,6 +98,16 @@ jobs:
           sudo docker tag nginx:latest 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
           sudo docker push 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
 
+      # Step 4: Set Up SSH Key
+      - name: Set Up SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.AWS_ACCESS_KEY_ID }}" > ~/.ssh/noorulqumar0_github
+          chmod 600 ~/.ssh/noorulqumar0_github
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/noorulqumar0_github
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+          
       # Step 4: Clone the repository
       - name: Clone the repository
         run: |
