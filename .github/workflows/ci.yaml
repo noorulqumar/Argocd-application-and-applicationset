@@ -121,7 +121,9 @@ jobs:
           cd ArgoCD-manifest-file
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          git status
           git add green-deployment/deployment.yml
           git commit -m "Update deployment image to ${IMAGE}"
-          git push
+          git status
+        # git push
 
