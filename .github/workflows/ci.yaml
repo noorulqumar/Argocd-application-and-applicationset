@@ -36,6 +36,7 @@ jobs:
           cd ~
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/noorulqumar0_github
+          chmod 600 ~/.ssh/noorulqumar0_github
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/noorulqumar0_github
           cat ~/.ssh/noorulqumar0_github
