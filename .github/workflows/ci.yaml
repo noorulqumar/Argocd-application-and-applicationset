@@ -59,7 +59,7 @@ jobs:
           git config user.name "noorulqumar" --global
           git config user.email "noorulqumar0@gmail.com" --global
           git commit -m "Update image tag "
-          git remote set-url origin https://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@github.com/noorulqumar/ArgoCD-manifest-file.git
+          git remote set-url origin https://noorulqumar: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@github.com/noorulqumar/ArgoCD-manifest-file.git
           git push
 
       # # Step 5: Update the deployment image
