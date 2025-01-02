@@ -75,11 +75,12 @@ jobs:
           ls
           cd ArgoCD-manifest-file
           ls
+          git remote set-url origin https://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@github.com/noorulqumar/ArgoCD-manifest-file.git
           git config --local user.name "noorulqumar"
           git config --local user.email "noorulqumar0@gmail.com"
           git status
           git add green-deployment/deployment.yml
-          git commit -m "Update deployment image to ${IMAGE}"
+          git commit -m "Update deployment image"
           git remote -v
           git status
           git push origin main
