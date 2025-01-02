@@ -44,18 +44,23 @@ jobs:
           sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
           echo "Updated image to ${IMAGE}"
           cat green-deployment/deployment.yml
-
-      # Step 3: Commit and push changes
-      - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ls
-          cd
-          ls
-          cd ArgoCD-manifest-file
           git config user.name "noorulqumar"
           git config user.email "noorulqumar0@gmail.com"
           git add green-deployment/deployment.yml
           git commit -m "Update deployment image to ${IMAGE}"
           git push
+
+      # # Step 3: Commit and push changes
+      # - name: Commit and push changes
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     ls
+      #     cd
+      #     ls
+      #     cd ArgoCD-manifest-file
+      #     git config user.name "noorulqumar"
+      #     git config user.email "noorulqumar0@gmail.com"
+      #     git add green-deployment/deployment.yml
+      #     git commit -m "Update deployment image to ${IMAGE}"
+      #     git push
