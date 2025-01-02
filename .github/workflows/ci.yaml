@@ -50,7 +50,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          ls
           cd
+          ls
           cd ArgoCD-manifest-file
           git config user.name "noorulqumar"
           git config user.email "noorulqumar0@gmail.com"
