@@ -50,6 +50,9 @@ jobs:
           ls
           cd phpm
           ls
+          cat phpm_deployment.yaml
+          sed -i "s|image:.*|image: ${IMAGE}|" phpm_deployment.yaml
+          cat  phpm_deployment.yaml
           # cd ArgoCD-manifest-file
           # IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
           # sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
