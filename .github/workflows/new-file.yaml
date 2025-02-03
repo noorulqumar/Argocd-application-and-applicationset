@@ -41,7 +41,7 @@ jobs:
           git clone  https://${{ secrets.SOURCE_REPO_PAT }}@github.com/kabayanremit/argocd.git
           ls
           cd argocd
-          is
+          ls
           # cd ArgoCD-manifest-file
           # IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
           # sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
