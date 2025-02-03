@@ -37,6 +37,8 @@ jobs:
       # Step 4: Update ArgoCD Config
       - name: Update ArgoCD Config
         run: |
+          REPO=${{ github.event.repository.name }}
+          echo $REPO
           IMAGE=400955697681.dkr.ecr.eu-west-2.amazonaws.com/phpm:$GITHUB_RUN_NUMBER # 400955697681.dkr.ecr.eu-west-2.amazonaws.com/phpm:stage-v0.0.3
           cd 
           git clone  https://${{ secrets.SOURCE_REPO_PAT }}@github.com/kabayanremit/argocd.git
