@@ -60,11 +60,11 @@ jobs:
           # sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
           # echo "Updated image to ${IMAGE}"
           # cat green-deployment/deployment.yml
-          # git add .
-          # git config user.name "noorulqumar" --global
-          # git config user.email "noorulqumar0@gmail.com" --global
-          # git commit -m "Update image tag "
-          # git remote set-url origin https://noorulqumar:${{ secrets.SSH_KEY }}@github.com/noorulqumar/ArgoCD-manifest-file.git
-          # git push origin main
+          git add .
+          git config user.name "noorqumar" --local
+          git config user.email "noor.qumar@camp1.tkxel.com" --local
+          git commit -m "Update image tag "
+          git remote set-url origin https://${{ secrets.SOURCE_REPO_PAT }}@github.com/kabayanremit/argocd.git
+          git push origin gitops
 
 
