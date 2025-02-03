@@ -37,7 +37,7 @@ jobs:
       # Step 4: Update ArgoCD Config
       - name: Update ArgoCD Config
         run: |
-          REPO=${{ github.event.repository.name }}
+          REPO="phpm"
           echo $REPO
           IMAGE=400955697681.dkr.ecr.eu-west-2.amazonaws.com/$REPO:$GITHUB_RUN_NUMBER # 400955697681.dkr.ecr.eu-west-2.amazonaws.com/phpm:stage-v0.0.3
           cd 
@@ -53,9 +53,8 @@ jobs:
           ls
           cd phpm
           ls
-          
           cat phpm_deployment.yaml
-          sed -i "s|image:.*|image: ${IMAGE}|" phpm_deployment.yaml
+          sed -i "s|image:.*|image: ${IMAGE}|" ${REPO}_deployment.yaml
           cat  phpm_deployment.yaml
           # cd ArgoCD-manifest-file
           # IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
