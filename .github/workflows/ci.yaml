@@ -16,21 +16,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Configure AWS credentials
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-2
+      # # Step 2: Configure AWS credentials
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: eu-west-2
 
-      # Step 3: Build and push image
-      - name: Build and push image
-        run: |
-          sudo aws ecr get-login-password --region eu-west-2 | sudo docker login -u AWS -p $(aws ecr get-login-password --region eu-west-2) 010526243714.dkr.ecr.eu-west-2.amazonaws.com
-          sudo docker pull nginx:latest
-          sudo docker tag nginx:latest 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
-          sudo docker push 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
+      # # Step 3: Build and push image
+      # - name: Build and push image
+      #   run: |
+      #     sudo aws ecr get-login-password --region eu-west-2 | sudo docker login -u AWS -p $(aws ecr get-login-password --region eu-west-2) 010526243714.dkr.ecr.eu-west-2.amazonaws.com
+      #     sudo docker pull nginx:latest
+      #     sudo docker tag nginx:latest 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
+      #     sudo docker push 010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
 
 
           
@@ -38,19 +38,19 @@ jobs:
       - name: Update ArgoCD Config
         run: |
           cd 
-          git clone https://github.com/noorulqumar/ArgoCD-manifest-file.git
+          git clone  https://${{ secrets.SOURCE_REPO_PAT }}@github.com/kabayanremit/argocd.git
           ls
-          cd ArgoCD-manifest-file
-          IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
-          sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
-          echo "Updated image to ${IMAGE}"
-          cat green-deployment/deployment.yml
-          git add .
-          git config user.name "noorulqumar" --global
-          git config user.email "noorulqumar0@gmail.com" --global
-          git commit -m "Update image tag "
-          git remote set-url origin https://noorulqumar:${{ secrets.SSH_KEY }}@github.com/noorulqumar/ArgoCD-manifest-file.git
-          git push origin main
+          # cd ArgoCD-manifest-file
+          # IMAGE=010526243714.dkr.ecr.eu-west-2.amazonaws.com/learn:$GITHUB_RUN_NUMBER
+          # sed -i "s|image:.*|image: ${IMAGE}|" green-deployment/deployment.yml
+          # echo "Updated image to ${IMAGE}"
+          # cat green-deployment/deployment.yml
+          # git add .
+          # git config user.name "noorulqumar" --global
+          # git config user.email "noorulqumar0@gmail.com" --global
+          # git commit -m "Update image tag "
+          # git remote set-url origin https://noorulqumar:${{ secrets.SSH_KEY }}@github.com/noorulqumar/ArgoCD-manifest-file.git
+          # git push origin main
 
 
 
